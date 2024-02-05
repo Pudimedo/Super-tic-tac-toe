@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Tic Tac Toe</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 95vh;
+        }
+        .big_board{
+            width: 95vh;
+            aspect-ratio: 1;
+            border: 5px solid;
+            border-color: black;
+        }
+        .small_board{
+            margin: auto;
+            aspect-ratio: 1;
+            display: inline-block;
+            width: 33.33%;
+            height: 33.33%;
+            background-color: aqua;
+        }
+        .cell{
+            display: inline-block;
+            width: 33.33%;
+            height: 33.33%;
+            background-color: brown;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script>
+        function create_elements_from_html(n, html){
+            const template = document.createElement("template")
+            let htmlaux = ``
+            for (a = 0; a < n; a += 1){
+                htmlaux += html
+            }
+
+            template.innerHTML = htmlaux
+            return template.content;
+        }
+
+        let big_board = create_elements_from_html(1, `<div class="big_board"></div>`)
+        document.body.appendChild(big_board)
+
+        let small_board = create_elements_from_html(9, `<div class="small_board"></div>`)
+        document.querySelector(".big_board").appendChild(small_board)
+
+        for (let i = 0; i < 9; i++) {
+            let cell = create_elements_from_html(1, `<div class="cell" data-cell></div>`)
+            document.querySelectorAll(".small_board").forEach((board) => board.appendChild(cell.cloneNode(true)))
+        }
+    </script>
+</body>
+</html>
