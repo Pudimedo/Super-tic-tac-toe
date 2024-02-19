@@ -10,7 +10,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
         }
         .big_board{
             margin: auto;
@@ -19,7 +18,6 @@
         }
         .small_board{
             vertical-align: top;
-            margin: auto;
             aspect-ratio: 1;
             display: inline-block;
             width: calc(95%/3);
@@ -34,12 +32,6 @@
             height: calc(95%/3);
             background-color: brown;
             margin: calc(5%/6);
-        }
-        .big_board_svg{
-
-        }
-        .small_board_svg{
-
         }
     </style>
 
@@ -63,9 +55,8 @@
             `<div class="big_board">
 
                 <svg class="small_board_svg" viewBox="0 0 100 100">
-                    <path d="l 0 100"
-                    >
-                    style="fill:none;stroke:green;stroke-width:50" >
+                    <path d="M 0 0 L 0 10"
+                    style="fill:none;stroke:black;stroke-width:3" >
 
                 </svg>
             </div>`)
@@ -74,9 +65,6 @@
 
         let small_board = create_elements_from_html(9, 
             `<div class="small_board">
-                
-                
-
             </div>`)
         document.querySelector(".big_board").appendChild(small_board)
 

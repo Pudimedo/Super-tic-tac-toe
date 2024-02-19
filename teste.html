@@ -5,31 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teste</title>
     <style>
-        .normal{
-            display: inline-block;
-            width: 30%;
-            height: 30%;
-            background-color: aqua;
-            margin: 3.3% 3.3% 3.3% 3.3%;
+        #fredo{
+            width: 50%;
+            height: 50%;
+            border: 5px solid black;
         }
-        .fredo{
-            width: 500px;
-            height: 500px;
+        #sla{
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            border: 5px solid green;
+        }
+        .big_board{
+            margin: auto;
+            width: 95vh;
+            aspect-ratio: 1;
+            border: 5px solid green;
         }
     </style>
 </head>
 <body>
-    <div class="fredo">
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
-        <div class="normal"></div>
+    <div class="big_board">
+        
+        <svg class="small_board_svg" viewBox="0 0 100 100">
+            <path d="M 45 50 l 10 0 "
+            style="fill:none;stroke:black;stroke-width:10" >
+            
+        </svg>
+        
 
     </div>
+    
 </body>
 </html>
