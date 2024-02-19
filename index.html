@@ -10,34 +10,43 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 95vh;
+            
         }
         .big_board{
+            margin: auto;
             width: 95vh;
             aspect-ratio: 1;
-            border: 5px solid;
-            border-color: black;
         }
         .small_board{
+            vertical-align: top;
             margin: auto;
             aspect-ratio: 1;
             display: inline-block;
-            width: 33.33%;
-            height: 33.33%;
-            background-color: aqua;
+            width: calc(95%/3);
+            height: calc(95%/3);
+            background-color: white;
+            margin: calc(5%/6);
         }
         .cell{
+            vertical-align: top;
             display: inline-block;
-            width: 33.33%;
-            height: 33.33%;
+            width: calc(95%/3);
+            height: calc(95%/3);
             background-color: brown;
+            margin: calc(5%/6);
+        }
+        .big_board_svg{
+
+        }
+        .small_board_svg{
+
         }
     </style>
 
 </head>
 
 <body>
-
+    
     <script>
         function create_elements_from_html(n, html){
             const template = document.createElement("template")
@@ -50,10 +59,25 @@
             return template.content;
         }
 
-        let big_board = create_elements_from_html(1, `<div class="big_board"></div>`)
+        let big_board = create_elements_from_html(1, 
+            `<div class="big_board">
+
+                <svg class="small_board_svg" viewBox="0 0 100 100">
+                    <path d="l 0 100"
+                    >
+                    style="fill:none;stroke:green;stroke-width:50" >
+
+                </svg>
+            </div>`)
+
         document.body.appendChild(big_board)
 
-        let small_board = create_elements_from_html(9, `<div class="small_board"></div>`)
+        let small_board = create_elements_from_html(9, 
+            `<div class="small_board">
+                
+                
+
+            </div>`)
         document.querySelector(".big_board").appendChild(small_board)
 
         for (let i = 0; i < 9; i++) {
