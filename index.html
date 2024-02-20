@@ -74,6 +74,19 @@
             template.innerHTML = htmlaux
             return template.content;
         }
+        let turn = "x"
+        function play(){
+            if (turn == "x"){
+                    let x = create_elements_from_html(1, `<path class="x_cell_path" d="M 10 10 L 90 90 Z M 10 90 L 90 10">`)
+                    turn = "o"
+                    return document.querySelector(".cell").appendChild(x)
+            }
+            else{
+                    let o = create_elements_from_html(1, `<circle class="o_cell_path" r="40" cx="50" cy="50">`)
+                    return document.querySelector(".cell").appendChild(o)
+                    turn = "x"
+            }
+        }
 
         let big_board = create_elements_from_html(1, 
             `<div class="big_board">
@@ -98,7 +111,7 @@
 
         for (let i = 0; i < 9; i++) {
             let cell = create_elements_from_html(1, `
-            <div class="cell" data-cell>
+            <div class="cell" data-cell onclick="play()"">
             </div>`)
             document.querySelectorAll(".small_board").forEach((board) => board.appendChild(cell.cloneNode(true)))
         }
