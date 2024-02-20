@@ -28,16 +28,35 @@
             position: relative;
         }
         .cell{
-            vertical-align: top;
             display: inline-block;
-            width: calc(95%/3);
             height: calc(95%/3);
-            margin: calc(5%/6);
+            width: calc(95%/3);
+            margin: calc(5%/18);
+            position: relative;
         }
         svg{
             position: absolute;
         }
-
+        .big_board_path{
+            fill:none;
+            stroke:black;
+            stroke-width:calc(5/3);
+        }
+        .small_board_path{
+            fill:none;
+            stroke:black;
+            stroke-width:calc(5/3);
+        }
+        .x_cell_path{
+            fill:none;
+            stroke:black;
+            stroke-width: 10;
+        }
+        .o_cell_path{
+            fill:none;
+            stroke: black;
+            stroke-width: 10;
+        }
     </style>
 
 </head>
@@ -60,8 +79,7 @@
             `<div class="big_board">
 
                 <svg class="small_board_svg" viewBox="0 0 100 100">
-                    <path d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0"
-                    style="fill:none;stroke:black;stroke-width:calc(5/3)" >
+                    <path class="big_board_path" d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0">
 
                 </svg>
             </div>`)
@@ -72,15 +90,16 @@
             `<div class="small_board">
                 <svg class="small_board_svg" viewBox="0 0 100 100">
 
-                    <path d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0"
-                    style="fill:none;stroke:black;stroke-width:calc(5/3)" >
+                    <path class="small_board_path" d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0">
 
                 </svg>
             </div>`)
         document.querySelector(".big_board").appendChild(small_board)
 
         for (let i = 0; i < 9; i++) {
-            let cell = create_elements_from_html(1, `<div class="cell" data-cell></div>`)
+            let cell = create_elements_from_html(1, `
+            <div class="cell" data-cell>
+            </div>`)
             document.querySelectorAll(".small_board").forEach((board) => board.appendChild(cell.cloneNode(true)))
         }
     </script>
