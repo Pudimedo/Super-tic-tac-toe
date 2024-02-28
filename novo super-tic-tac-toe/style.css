@@ -1,0 +1,34 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+.big_board{
+    margin: auto;
+    display: grid;
+    width: 95vh;
+    aspect-ratio: 1;
+    grid-template-columns: repeat(3, auto);
+}
+.small_board{
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    border: 8px solid black;
+}
+
+.small_board:first-child,
+.small_board:nth-child(2),
+.small_board:nth-child(3){
+    border-top: none;
+}
+.small_board:nth-child(3n + 1){
+    border-left: none;
+}
+.small_board:nth-child(3n){
+    border-right: none;
+}
+.small_board:last-child,
+.small_board:nth-child(7),
+.small_board:nth-child(8){
+    border-bottom: none;
+}
