@@ -1,19 +1,49 @@
 *, *::after, *::before{
     box-sizing: border-box;
 }
+:root{
+    --small-board-size: 300px;
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+    margin: 0;
+}
 
 .big_board{
-    margin: auto;
+    width: 100vw;
+    height: 100vh;
     display: grid;
-    width: 95vh;
-    aspect-ratio: 1;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto)
+}
+
+.small_board{
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    width: var(--small-board-size);
+    height: var(--small-board-size);
+    border: 7px solid black;
+    display: grid;
     grid-template-columns: repeat(3, auto);
 }
-.small_board{
-    vertical-align: top;
-    width: 100%;
-    height: 100%;
-    border: 8px solid black;
+
+.cell{
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 3.5px solid black;
+    display: flex;
+    position: relative;
 }
 
 .small_board:first-child,
@@ -31,4 +61,52 @@
 .small_board:nth-child(7),
 .small_board:nth-child(8){
     border-bottom: none;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+.cell:nth-child(3n + 1){
+    border-left: none;
+}
+.cell:nth-child(3n){
+    border-right: none;
+}
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8){
+    border-bottom: none;
+}
+.cell.x::before,
+.cell.x::after{
+    content: '';
+    background-color: black;
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+}
+.cell.x::before{
+    transform: rotate(45deg);
+}
+.cell.x::after{
+    transform: rotate(-45deg);
+}
+.cell.o::before,
+.cell.o::after{
+    content: '';
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+}
+.cell.o::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+.cell.o::after{
+    background-color: white;
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
 }
