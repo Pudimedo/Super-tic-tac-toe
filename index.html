@@ -2,122 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Tic Tac Toe</title>
-
-    <style>
-        body{
-            display: flex;
-        }
-        .big_board{
-            margin: auto;
-            width: 95vh;
-            aspect-ratio: 1;
-            position: relative;
-        }
-        .small_board{
-            vertical-align: top;
-            aspect-ratio: 1;
-            display: inline-block;
-            width: calc(95%/3);
-            height: calc(95%/3);
-            background-color: white;
-            margin: calc(5%/6);
-            position: relative;
-        }
-        .cell{
-            display: inline-block;
-            height: calc(95%/3);
-            width: calc(95%/3);
-            margin: calc(5%/18);
-            position: relative;
-        }
-        svg{
-            position: absolute;
-        }
-        .big_board_path{
-            fill:none;
-            stroke:black;
-            stroke-width:calc(5/3);
-        }
-        .small_board_path{
-            fill:none;
-            stroke:black;
-            stroke-width:calc(5/3);
-        }
-        .x_cell_path{
-            fill:none;
-            stroke:black;
-            stroke-width: 10;
-        }
-        .o_cell_path{
-            fill:none;
-            stroke: black;
-            stroke-width: 10;
-        }
-    </style>
-
-</head>
-
-<body>
     
-    <script>
-        function create_elements_from_html(n, html){
-            const template = document.createElement("template")
-            let htmlaux = ``
-            for (a = 0; a < n; a += 1){
-                htmlaux += html
-            }
-
-            template.innerHTML = htmlaux
-            return template.content;
-        }
-        let turn = "x"
-        function play(x) {
-            let svg;
-            if (turn == "x") {
-                svg = create_elements_from_html(1, `<svg viewBox="0 0 100 100"> <path class="x_cell_path" d="M 10 10 L 90 90 Z M 10 90 L 90 10"> </svg>`)
-                turn = "o"
-                x.appendChild(svg)
-                return;
-            } 
-            else {
-                svg = create_elements_from_html(1, `<svg viewBox="0 0 100 100"> <circle class="o_cell_path" r="40" cx="50" cy="50"> </svg>`)
-                turn = "x"
-                x.appendChild(svg)
-                return;
-            }
-            
-        }
-
-        let big_board = create_elements_from_html(1, 
-            `<div class="big_board">
-
-                <svg class="small_board_svg" viewBox="0 0 100 100">
-                    <path class="big_board_path" d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0">
-
-                </svg>
-            </div>`)
-
-        document.body.appendChild(big_board)
-
-        let small_board = create_elements_from_html(9, 
-            `<div class="small_board">
-                <svg class="small_board_svg" viewBox="0 0 100 100">
-
-                    <path class="small_board_path" d="M 33.33333 0 l 0 100 M 66.66666 0 l 0 100 M 0 33.33333 l 100 0 M 0 66.66666 l 100 0">
-
-                </svg>
-            </div>`)
-        document.querySelector(".big_board").appendChild(small_board)
-
-        for (let i = 0; i < 9; i++) {
-            let cell = create_elements_from_html(1, `
-            <div class="cell" data-cell onclick="play(this)">
-            </div>`)
-            document.querySelectorAll(".small_board").forEach((board) => board.appendChild(cell.cloneNode(true)))
-        }
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <title>Super tic tac toe</title>
+</head>
+<body>
+    <script src="script.js"></script>
+    <div class="winning_message">
+        <div data-winning-message-text>X wins!</div>
+        <button id="restart">Restart</button>
+    </div>
 </body>
 </html>

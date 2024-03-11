@@ -124,6 +124,9 @@ body {
     height: var(--mark-size);
     background-color: black;
 }
+.small_board.o .cell:not(.x):not(.o):hover::before{
+    background-color: lightgray;
+}
 .cell.o::after,
 .small_board.o .cell:not(.x):not(.o):hover::after{
     background-color: white;
